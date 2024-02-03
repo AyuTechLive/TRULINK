@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class Utils {
-  void toastMessage(
-      BuildContext context, String message, Color bgcolor, int time) {
+  void toastMessage(String message, Color bgcolor, int time) {
     Fluttertoast.showToast(
         msg: message,
         toastLength: Toast.LENGTH_LONG,

@@ -4,7 +4,11 @@ class Roundbuttonnew extends StatelessWidget {
   final String title;
   final bool loading;
   final VoidCallback ontap;
-  const Roundbuttonnew({super.key, required this.title, required this.ontap, this.loading=false});
+  const Roundbuttonnew(
+      {super.key,
+      required this.title,
+      required this.ontap,
+      this.loading = false});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +21,7 @@ class Roundbuttonnew extends StatelessWidget {
         width: width * 0.577,
         height: height * 0.07625,
         decoration: ShapeDecoration(
-          color: Color(0xFF7455F7),
+          color: Color(0xff0a1e51),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
           ),
@@ -31,16 +35,21 @@ class Roundbuttonnew extends StatelessWidget {
           ],
         ),
         child: Center(
-          child:loading?CircularProgressIndicator(color: Colors.white,strokeWidth: 3,): Text(
-            title,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-              fontFamily: 'Inter',
-              fontWeight: FontWeight.w800,
-              height: 0,
-            ),
-          ),
+          child: loading
+              ? CircularProgressIndicator(
+                  color: Colors.white,
+                  strokeWidth: 3,
+                )
+              : Text(
+                  title,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontFamily: 'Inter',
+                    fontWeight: FontWeight.w800,
+                    height: 0,
+                  ),
+                ),
         ),
       ),
     );

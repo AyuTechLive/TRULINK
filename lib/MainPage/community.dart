@@ -37,16 +37,16 @@ class _CommunityState extends State<Community> {
                             Radius.circular(15),
                           ),
                           borderSide:
-                              BorderSide(color: Color(0xFF7455F7), width: 3)),
+                              BorderSide(color: Color(0xff0a1e51), width: 3)),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20)),
                         borderSide:
-                            BorderSide(color: Color(0xFF7455F7), width: 3),
+                            BorderSide(color: Color(0xff0a1e51), width: 3),
                       ),
                       //helperText: 'Enter your email',
                       prefixIcon: Icon(
                         Icons.error,
-                        color: Color(0xFF7455F7),
+                        color: Color(0xff0a1e51),
                       )),
                 ),
               ),
@@ -67,11 +67,11 @@ class _CommunityState extends State<Community> {
                           Radius.circular(15),
                         ),
                         borderSide:
-                            BorderSide(color: Color(0xFF7455F7), width: 3)),
+                            BorderSide(color: Color(0xff0a1e51), width: 3)),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                       borderSide:
-                          BorderSide(color: Color(0xFF7455F7), width: 3),
+                          BorderSide(color: Color(0xff0a1e51), width: 3),
                     ),
                     //helperText: 'Enter your email',
                   ),
@@ -98,17 +98,13 @@ class _CommunityState extends State<Community> {
 
   void performTaskAfterDelay() {
     // Using Future.delayed to perform a task after 3 seconds
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(Duration(seconds: 1), () {
       // Your task to be executed after 3 seconds
       setState(() {
         loading = false;
       });
       Utils().toastMessage(
-          context,
-          'Your Issue Is Sucessfully Shared With Developers',
-          Color(0xFF7455F7),
-          2);
-      print("Task executed after 3 seconds");
+          'Feature Currently In Development', Color(0xff0a1e51), 2);
     });
   }
 }

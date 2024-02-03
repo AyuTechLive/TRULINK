@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:dark_pattern_detector/utils/snakbar.dart';
 import 'package:flutter/services.dart';
 import 'package:dark_pattern_detector/results_sucess.dart';
 import 'package:dark_pattern_detector/utils/utils.dart';
@@ -35,9 +36,6 @@ class _ExamOpenState extends State<ExamOpen> {
       },
       child: SafeArea(
         child: Scaffold(
-          appBar: AppBar(
-            title: Center(child: Text('TrueLink Web Search')),
-          ),
           body: Container(
             child: InAppWebView(
               initialUrlRequest: URLRequest(url: Uri.parse(widget.url)),
@@ -52,14 +50,11 @@ class _ExamOpenState extends State<ExamOpen> {
                 _webViewController = controller;
               },
               onLoadStart: (InAppWebViewController controller, Uri? url) {
-                print('loading url $url');
                 if (url.toString() != widget.url) {
                   _sendForPrediction(url.toString());
                 }
               },
-              onLoadStop: (InAppWebViewController controller, Uri? url) {
-                print('stopping url $url');
-              },
+              onLoadStop: (InAppWebViewController controller, Uri? url) {},
               onProgressChanged:
                   (InAppWebViewController controller, int progress) {
                 // You can use this callback to get the loading progress.
@@ -90,16 +85,20 @@ class _ExamOpenState extends State<ExamOpen> {
           _prediction = responseBody['prediction'];
         });
         if (_prediction == 'Dark Pattern') {
-          Utils().toastMessage(
-              context,
-              'We had Detected Some Dark Pattern In It Please Proceed Safely',
-              Colors.red,
-              5);
+          MySnackbar.show(context,
+              'We had Detected Something Phisy In It Please Proceed Safely');
+          // Utils().toastMessage(
+          //     context,
+          //     'We had Detected Some Dark Pattern In It Please Proceed Safely',
+          //     Colors.red,
+          //     5);
           HapticFeedback.vibrate();
           // print('dark');
         } else {
-          Utils().toastMessage(context,
-              'This is a safe website you can proceed safely', Colors.green, 2);
+          MySnackbar.show(
+              context, 'This is a safe website you can proceed safely');
+          // Utils().toastMessage(context,
+          //     'This is a safe website you can proceed safely', Colors.green, 2);
           //  print('white');
         }
       } else {
